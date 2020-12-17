@@ -26,7 +26,6 @@
     	<div class="col-md-12">
 <div class="page-header">
 <h1>회원관리</h1>
-<hr>
 </div>
 						
 <form action="/admin/memberlist" method="get">						

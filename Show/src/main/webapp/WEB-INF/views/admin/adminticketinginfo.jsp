@@ -29,7 +29,6 @@
 <!--     	<div class="col-md-12"> -->
     <div class="page-header">
 <h1>예매관리</h1>
-<hr>
 </div>
 		<div class="panel-body">
 			<table id="demo-dt-selection" class="table table-striped table-bordered" >

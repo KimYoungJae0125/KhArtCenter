@@ -18,6 +18,15 @@
 
 </style>
 
+<script>
+	function fnCancel( numb ) {
+// 		alert(numb+"번 누르셨습니다.");
+		if(confirm("정말로 삭제하시겠습니까?") == true){
+			window.location.href = "/admin/attractiondel?attraction_no="+numb;
+		}
+	}
+</script>
+
 <div class="container-fluid">
   <div class="row flex-nowrap">
 
@@ -28,14 +37,14 @@
 	<div class="row">
     	<div class="col-md-12">
 <div class="page-header">
-<h1>업데이트</h1>
-<hr>
+<h1>볼거리 수정</h1>
 </div>
 
 <form action="/admin/attractionupdate" method="post">
 
 <c:forEach items="${view }" var="view">
-	볼거리 번호 <input readonly="readonly" name="attraction_no" value="${view.attraction_no }" />
+	볼거리 번호<br> 
+	<input readonly="readonly" name="attraction_no" value="${view.attraction_no }" />
 
 	<div class="form-group">
 		<label for="attracion_photo">이미지 URL</label>
@@ -98,19 +107,18 @@
 		<input type="text" id="attraction_longitude" name="attraction_longitude" value="${view.attraction_longitude }" class="form-control"/>
 	</div>
 	
-	</c:forEach>
-
 	<div class="text-center">
 		<button class="btn btn-primary" id="btnUpdate">수정</button>
-		<input type="reset" id="cancel" class="btn btn-danger" value="취소"/>
+		<input type="button" class="btn btn-danger" value="삭제" class="form-control" onclick="fnCancel(${view.attraction_no });" />
 	</div>
+	
+	</c:forEach>
 	
 </form>
 
 		</div>
 	</div>
 	</div>
-
 
     </main>
   </div>

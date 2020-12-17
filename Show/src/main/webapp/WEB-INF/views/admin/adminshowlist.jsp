@@ -8,8 +8,9 @@
 <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
 <style>
 .goods_list {
-	margin-left: 20px;
+/* 	margin-left: 20px; */
 	overflow: hidden;
+	width: 1050px;
 }
 
 .goods_list li {
@@ -93,31 +94,40 @@
 	text-overflow: ellipsis;
 }
 
+.btn {
+	font-size: 14px;
+	margin-left: 80px;
+	margin-bottom: 10px
+}
+
 
 </style>
 
+<script type="text/javascript">
+
+</script>
+
 <c:import url="/WEB-INF/views/admin/adminheader.jsp" />
 
-<div class="container-fluid">
+<div class="container">
   <div class="row flex-nowrap">
 
-    <main class="col-12 py-md-3 pl-md-6 bd-content" role="main">
+    <main class="col-11 py-md-3 pl-md-6" role="main">
     
     <div class="container">
              
 <div class="row">
-    <div class="col-md-12">
-         
-        <div class="page-header">
+    <div class="col-md-11">
             <h1>공연 리스트</h1>
-	<hr>
-        </div>
+           
+            <hr>
     </div>
+
+        
 </div>
 
-
 	<ul class="goods_list" id="goodsList">
-
+ 	<a href="/admin/showinsert"><input type="button" class="btn btn-primary col-md-10" value="공연등록" class="form-control" onclick="fnbutton();" /></a>
 		<c:forEach var="l" items="${showList }">
 				<li>
 			<a href="/admin/showupdate?show_id=${l.show_id }">

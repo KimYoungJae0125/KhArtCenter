@@ -90,5 +90,9 @@ public interface AdminDao {
 
 	public List<?> hidukeuriage();
 
+	public void attractionDelete(TB_ATTRACTION tb_attraction);
+
+	public void memberDelete(Member member);
+
 
 }

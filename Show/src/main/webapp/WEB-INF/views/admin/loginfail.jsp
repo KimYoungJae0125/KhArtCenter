@@ -12,7 +12,7 @@
 
 <hr>
 
-<a href="/admin/login"><button>로그인 페이지로</button></a>
+<a href="/main/main"><button>로그인 페이지로</button></a>
 
 </body>
 </html>

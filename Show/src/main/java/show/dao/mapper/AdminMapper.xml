@@ -5,7 +5,6 @@
     PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
     "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
     
-    
 
 <mapper namespace="show.dao.face.AdminDao">
 
@@ -386,5 +385,15 @@
 		WHERE status = 'Y'
 		GROUP BY to_char(payment_date, 'MM/DD') 
 	</select>
+	
+	<delete id="attractionDelete" parameterType="show.dto.TB_ATTRACTION">
+	    DELETE FROM tb_attraction
+    	WHERE attraction_no = #{attraction_no}
+	</delete>
+	
+	<delete id="memberDelete" parameterType="show.dto.Member">
+		DELETE FROM tb_member
+		WHERE member_id = #{member_id}
+	</delete>
 	
 </mapper>

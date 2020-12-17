@@ -65,7 +65,6 @@ body {
     <ul class="navbar-nav">
       <li class="pl-md-5 nav-item"><a class="nav-link" href="/admin/memberlist">회원관리</a></li>
       <li class="pl-md-5 nav-item"><a class="nav-link" href="/admin/salesdate">매출관리</a></li>
-      <li class="pl-md-5 nav-item"><a class="nav-link" href="/admin/notice">공지사항</a></li>
       <li class="pl-md-5 nav-item"><a class="nav-link" href="/admin/ticketinginfo">예매관리</a></li>
       <li class="pl-md-5 nav-item"><a class="nav-link" href="/admin/showlist">공연관리</a></li>
       <li class="pl-md-5 nav-item"><a class="nav-link" href="/admin/attractionlist">볼거리관리</a></li>

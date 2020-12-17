@@ -213,6 +213,20 @@ public class AdminServiceImpl implements AdminService {
 		return list;
 	}
 
+	@Override
+	public void attractionDelete(TB_ATTRACTION tb_attraction) {
+		
+		adminDao.attractionDelete(tb_attraction);
+		
+	}
+
+	@Override
+	public void memberDelete(Member member) {
+		
+		adminDao.memberDelete(member);
+		
+	}
+
 
 
 }

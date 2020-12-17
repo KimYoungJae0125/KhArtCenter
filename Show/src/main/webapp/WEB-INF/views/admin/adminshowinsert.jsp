@@ -21,7 +21,6 @@
 <div class="page-header">
 <h1>공연 등록</h1>
 </div>
-<hr>
 
 
 <form action="/admin/showinsert" method="post">

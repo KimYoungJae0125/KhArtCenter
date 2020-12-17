@@ -22,7 +22,6 @@
     	<div class="col-md-12">
 <div class="page-header">
 <h1>볼거리 리스트</h1>
-<hr>
 </div>
 
 <table class="table table-striped table-hover table-condensed">

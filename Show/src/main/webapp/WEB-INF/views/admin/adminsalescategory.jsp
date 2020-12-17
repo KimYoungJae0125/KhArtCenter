@@ -26,7 +26,6 @@
     	<div class="col-md-12">
   <div class="page-header">  
 <h1>카테고리별</h1>
-<hr>
 </div>
 		<div class="panel-body">
 			<table id="demo-dt-selection" class="table table-striped table-bordered" >

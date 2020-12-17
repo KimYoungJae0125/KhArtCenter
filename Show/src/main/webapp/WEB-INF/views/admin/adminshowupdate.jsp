@@ -15,8 +15,8 @@
 
 </style>
 
-<script>
-	function fnCancel( numb ) {
+<script type="text/javascript">
+	function fnDelete( numb ) {
 // 		alert(numb+"번 누르셨습니다.");
 		if(confirm("정말로 삭제하시겠습니까?") == true){
 			window.location.href = "/admin/showdel?show_id="+numb;
@@ -26,10 +26,10 @@
 
 <c:import url="/WEB-INF/views/admin/adminheader.jsp" />
 
-<div class="container-fluid">
+<div class="container">
   <div class="row flex-nowrap">
 
-    <main class="col-sm-6 col-sm-offset-4" role="main">
+    <main class="col-sm-6 col-sm-offset-3" role="main">
     
     <div id="form-group">
     
@@ -38,9 +38,7 @@
 
 <div class="page-header">
 <h1>공연 수정</h1>
-<hr>
 </div>
-
 
 
 
@@ -140,11 +138,10 @@
 		<input type="text" id="show_addr" name="show_addr" value="${view.show_addr }" class="form-control"/>
 	</div>
 	
-	
 
 	<div class="text-center">
 		<button class="btn btn-primary" id="btnUpdate">수정</button>
-		<input type="button" class="btn btn-danger" value="삭제" class="form-control" onclick="fnCancel(${view.show_id });" />
+		<input type="button" class="btn btn-danger" value="삭제" class="form-control" onclick="fnDelete(${view.show_id });" />
 <%-- 		<button onclick="fnCancel(${view.show_id });" class="btn btn-danger">삭제</button> --%>
 	</div>
 	

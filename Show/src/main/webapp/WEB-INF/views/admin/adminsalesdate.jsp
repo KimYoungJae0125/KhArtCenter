@@ -27,7 +27,6 @@
     	<div class="col-md-12">
 <div class="page-header">
 <h1>날짜별</h1>
-<hr>
 </div>
 
 <form action="/admin/salesdate" method="post">						

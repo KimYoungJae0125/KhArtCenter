@@ -22,7 +22,6 @@
     	<div class="col-md-12">
 <div class="page-header">
 <h1>관리자 메인</h1>
-<hr>
 </div>
 
 	<div id="container" class="effect aside-float aside-bright mainnav-lg">
