@@ -1,0 +1,22 @@
+DROP TABLE TB_SHOW;
+create table tb_show(
+show_id varchar2(200),
+show_division varchar2(200),
+show_genre varchar2(200),
+show_place varchar2(200),
+show_name varchar2(2000),
+show_start date,
+show_end date,
+show_rprice int,
+show_sprice int,
+show_time varchar(200),
+show_lat varchar(200),
+show_len varchar(200),
+show_call varchar(200),
+show_image varchar2(4000),
+show_cast varchar(3000),
+show_age varchar(50),
+show_host varchar(200),
+show_sub varchar(200),
+show_addr varchar(2000)
+);
