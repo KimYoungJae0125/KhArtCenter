@@ -118,13 +118,15 @@
 	});
 	
 	var loadMoreChk = false;
+	var removeChk = false;
 	$('#Nav-sideMenu-loadMore').on("click", function(){
 				if(loadMoreChk == false ){
 					loadMoreChk = true	
 						listNo = 1
 					console.log("클릭")
-
 					for(var k=0; k<5; k++){
+						
+
 						$('#Nav-sideMenu-loadMore').css("display", "none")
 
 						i++
@@ -149,7 +151,7 @@
 									
 									
 									$(".Nav-sideMenu-listViewListDiv").css("opacity", "1");
-									
+
 									totalCount = $('#total').val()
 									
 								}
@@ -167,20 +169,44 @@
 
 								return;
 							} else{
-								loadMoreChk = false
-
 								$('#Nav-sideMenu-loadMore').css("display", "")
+									loadMoreChk = false
+									
+
 								
 							}
+					if(removeChk == true){
+						loadMoreChk = true
+
+// 	 					alert("종료")
+						return;
+					}
 						}
 					} else{
 // 			 			alert("한번만합시다")
-			 			totalCount--
+			 			if(removeChk == true){
+							if(i < totalCount){
+							loadMoreChk = false
+								
+							}
+
+							removeChk = false
+			 			}
+
 						return;
 					}
-				
 
 				});
+	
+	$("#removeLoadMore").on('click', function(){
+		removeChk = true
+		$('#total').val($('#total').val()-1)
+		$('#Nav-sideMenu-loadMore').trigger("click");
+
+		
+	
+	})
+	
 	
 	//시작할때 목록 불러오기		
 // 	$('#Nav-sideMenu-visitList').trigger("click");
@@ -335,6 +361,7 @@
 			
 		</div>
 			<div id="Nav-sideMenu-loadMore" style="display:none;">
+			<input type="hidden" id="removeLoadMore">
 			loadMore
 			</div>
 

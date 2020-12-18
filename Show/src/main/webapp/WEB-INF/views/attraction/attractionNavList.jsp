@@ -44,7 +44,7 @@ $(document).ready(function(){
 					 $("#Nav-navList-WrapListDiv" + attraction_no).css("height", "0");
 					 $("#Nav-navList-WrapListDiv" + attraction_no).css("opacity", "0");
 				
-							$('#Nav-sideMenu-loadMore').trigger("click");
+							$('#removeLoadMore').trigger("click");
 				
 
 					setTimeout(function() {
