@@ -1,0 +1,26 @@
+DROP TABLE TB_NAVIGATION_BAR;
+
+DROP sequence nav_attno_seq;
+DROP sequence nav_showno_seq;
+DROP sequence nav_visit_attno_seq;
+DROP sequence nav_visit_showno_seq;
+DROP sequence nav_userId_seq;
+
+CREATE TABLE TB_NAVIGATION_BAR (
+    attNo_pr int,
+    attNo int,
+    showNo_pr int,
+    showNo int, -- 공연 스크랩
+    visit_attNo_pr int, -- 방문한 볼거리 정렬 할 때 필요
+    visit_attNo int, -- 방문한 볼거리
+    visit_showNo_pr int, -- 방문한 공연 정렬 할 때 필요
+    visit_showNo int, -- 방문한 공연
+    scrap_userId varchar2(1000) default 'visitor', -- userID로 스크랩 확인
+    scrap_userId_No int --전체 조회할 때 필요
+);
+
+create sequence nav_attno_seq;
+create sequence nav_showno_seq;
+create sequence nav_visit_attno_seq;
+create sequence nav_visit_showno_seq;
+create sequence nav_User_id_seq;
