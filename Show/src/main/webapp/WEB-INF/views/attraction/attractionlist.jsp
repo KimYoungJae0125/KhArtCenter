@@ -105,6 +105,14 @@ $(document).ready(function() {
 		
 	})
 	
+	$('.attraction-list-searchInput').keydown(function(key){
+// 			alert("작동")
+		if(key.keyCode == 13){
+			$('.attraction-list-searchBtn').trigger("click");	
+			return false;			
+		}
+		return true;
+	})
 		
 	$('.attraction-list-searchBtn').on('click',function() {
 		console.log("클릭")
