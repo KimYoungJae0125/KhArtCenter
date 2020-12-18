@@ -8,7 +8,6 @@
 
 <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
 
-
 <c:import url="/WEB-INF/views/admin/adminheader.jsp" />
 
 <div class="container-fluid">
@@ -22,6 +21,16 @@
     	<div class="col-md-12">
 <div class="page-header">
 <h1>볼거리 리스트</h1>
+</div>
+
+<div>
+    <a href="/admin/attractioninsert"><input type="button" class="btn btn-primary col-md-1" value="볼거리 등록" class="form-control" onclick="fnbutton();" /></a>
+</div>
+<div style="float:right;">
+	<form action="/admin/attractionlist" method="get">
+		<input type="text" id="searchText" name="searchText" value="">
+		<button>검색</button>
+	</form>
 </div>
 
 <table class="table table-striped table-hover table-condensed">
@@ -47,6 +56,9 @@
 </c:forEach>
 </tbody>
 </table>
+	<span class="pull-left">total : ${paging.totalCount }</span>
+	<div class="clearfix"></div>
+	<jsp:include page="/WEB-INF/views/util/adminattractionlistpaging.jsp" />
 
 	</div>
 	</div>

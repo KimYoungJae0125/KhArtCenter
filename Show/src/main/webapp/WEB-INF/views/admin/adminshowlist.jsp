@@ -6,6 +6,9 @@
 
 
 <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
+
+<c:import url="/WEB-INF/views/admin/adminheader.jsp" />
+
 <style>
 .goods_list {
 /* 	margin-left: 20px; */
@@ -41,7 +44,7 @@
 }
 
 .goods_list li .list_info {
-	padding: 14px 14px 13px 13px;
+	padding: 6px 14px 13px 13px;
 	height: 70px;
 	background: #fff;
 	border: 1px solid white;
@@ -107,7 +110,6 @@
 
 </script>
 
-<c:import url="/WEB-INF/views/admin/adminheader.jsp" />
 
 <div class="container">
   <div class="row flex-nowrap">
@@ -121,13 +123,20 @@
             <h1>공연 리스트</h1>
            
             <hr>
-    </div>
+    </div> 
+</div>
 
-        
+<div>
+    <a href="/admin/showinsert"><input type="button" class="btn btn-primary col-md-1" value="공연등록" class="form-control" onclick="fnbutton();" /></a>
+</div>
+<div style="float:right;">
+	<form action="/admin/showlist" method="get">
+		<input type="text" id="searchText" name="searchText" value="">
+		<button>검색</button>
+	</form>
 </div>
 
 	<ul class="goods_list" id="goodsList">
- 	<a href="/admin/showinsert"><input type="button" class="btn btn-primary col-md-10" value="공연등록" class="form-control" onclick="fnbutton();" /></a>
 		<c:forEach var="l" items="${showList }">
 				<li>
 			<a href="/admin/showupdate?show_id=${l.show_id }">
@@ -145,12 +154,12 @@
 				</li>
 		</c:forEach>
 	</ul>
+	<jsp:include page="/WEB-INF/views/util/adminshowlistpaging.jsp" />
 </div>
 
     </main>
   </div>
 </div>
-
 
 
 

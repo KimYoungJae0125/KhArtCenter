@@ -6,11 +6,6 @@
 <c:import url="/WEB-INF/views/header.jsp" />
 
 
-<!-- <link rel="preconnect" href="https://fonts.gstatic.com"> -->
-<!-- <link href="https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Nanum+Gothic&display=swap" rel="stylesheet"> -->
-
-
-
 <link rel='stylesheet' href='//cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.5.0/css/bootstrap.min.css'>
 
 <c:import url="/WEB-INF/views/admin/adminheader.jsp" />

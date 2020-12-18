@@ -26,11 +26,19 @@
     <div class="container">
              
 	<div class="row">
-<!--     	<div class="col-md-12"> -->
-    <div class="page-header">
-<h1>예매관리</h1>
+    	<div class="col-md-12">
+<div class="page-header">
+<h1>예매 관리</h1>
 </div>
-		<div class="panel-body">
+
+<div style="float:right;">
+	<form action="/admin/ticketinginfo" method="get">
+		<input type="text" id="searchText" name="searchText" value="">
+		<button>아이디검색</button>
+	</form>
+</div>
+
+		<div>
 			<table id="demo-dt-selection" class="table table-striped table-bordered" >
 				<thead>
 					<tr>
@@ -69,13 +77,13 @@
 					</tr>
 					</c:forEach>
 				</tbody>
-			</table>    
-    	</div>
+			</table>
+			<span class="pull-left">total : ${paging.totalCount }</span>
+			<jsp:include page="/WEB-INF/views/util/adminattractionlistpaging.jsp" />
+			 </div>   
 	</div>
 </div>
-
-<!-- </div> -->
-
+</div>
     </main>
   </div>
 </div>
