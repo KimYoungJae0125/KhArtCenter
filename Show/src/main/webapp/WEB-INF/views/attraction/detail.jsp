@@ -6,6 +6,7 @@
 
 <c:import url="/WEB-INF/views/header.jsp" />
 <c:import url="/WEB-INF/views/attraction/attractionNavMainMenu.jsp" />
+<c:import url="/WEB-INF/views/attraction/categoryBtn.jsp" />
 
 
 <script type="text/javascript" src="//dapi.kakao.com/v2/maps/sdk.js?appkey=2839883285d5293951571fa58223465e"></script>
@@ -271,9 +272,11 @@
 			console.log("클릭");
 			
 			var chkurl = document.location.href.indexOf("area")
+			, chkurl2 = document.location.href.indexOf("boardType")
 			, area = ""
 			, cate = $(this).attr('id')
-			, cateName = document.getElementById($(this).attr('id')).innerHTML;
+			, cateName = document.getElementById($(this).attr('id')).innerHTML
+			, boardType = "";
 		
 			cateName = cateName.substr(1)
 
@@ -284,6 +287,14 @@
 				
 				area = "area=" + area +"&"
 				
+			}
+			
+			if(chkurl2 !== -1){
+				var boardTypesplit = document.location.href.split("boardType=")
+				, idx = boardTypesplit[1].indexOf("&")
+				, boardType = boardTypesplit[1].substring(0, idx)
+				
+				boardType = "boardType=" + boardType + "&"
 			}
 			
 			if(cateName == '건축/조형물'){
@@ -301,7 +312,7 @@
 			} else {
 				cateName = "etc"
 			}
-			location.href= "/attraction/list?"+area+cate+"="+cateName+"&curPage=1";
+			location.href= "/attraction/list?"+boardType+area+cate+"="+cateName+"&curPage=1";
 
 		})
 		
@@ -317,7 +328,7 @@
 
 				var delChk = false;
 				var insChk = false;
-				var scrapText = "스크랩하기"
+				var scrapText = "<i class='far fa-bookmark'></i>"
 			if(scrapChk){
 				 delChk = true;
 				 scrapChk = false;
@@ -325,7 +336,7 @@
 			} else {
 				insChk = true;
 				 scrapChk = true;
-				 scrapText = "스크랩취소하기"
+				 scrapText = "<i class='fas fa-bookmark'></i>"
 			}
 			
 		
@@ -363,7 +374,7 @@
 	.test {
 			postion: absoulute;
 			background-color: gray;
-			width: 1800px;
+			width: 1500px;
 			min-width: 1000px;
 			height: 100%;
 			margin: 0 auto
@@ -377,6 +388,7 @@
 	display: inline-block;
 	padding: 10px;
 	width: 33%;
+	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	float:left;
 		font-family: 'Nanum Pen Script', cursive;
@@ -394,17 +406,12 @@
 	 	
 }
 
-body {
-	background-color: gray;
-}
-
 
 /* Div CSS */
 
 .attraction-detail-wrapDiv {
 	width: 1500px;
 	margin: 0 auto;
-	border: 1px solid #ccc;
 	border-radius: 5px;
 	background-color: white;
 	
@@ -434,13 +441,13 @@ body {
 	 width:0px; 
 	 height:0px;
 	border-radius:5px;
-	margin-top:20px;
+	margin-top:40px;
 }
 
 
 .attraction-detail-imgMainDiv {
 	border-top:1px solid #ccc;
-	width: 1250px;
+	width: 1040px;
 	height: 500px;
 	position: relative;
 	margin: 0 auto;
@@ -450,7 +457,7 @@ body {
 	
 }
 .attraction-detail-imgDiv {
-	width: 40%;
+	width: 60%;
 	height: 90%;
 	/* 	기준점 */
  	position: relative; 
@@ -469,7 +476,6 @@ body {
 	width: 100%;
 	height: 100%;
 	border: 1px solid #ccc;
-	padding: 5px 5px 20px 5px;
 	border-radius: 5px;
 }
 
@@ -496,6 +502,7 @@ body {
 	background:white;
 	border-radius: 5px;
 	height: 40px;
+	width: 100px;
 }
 
 .attraction-detail-listBackBtn:hover{
@@ -511,10 +518,12 @@ P {
 }
 
 .attraction-detail-scrapSpan {
-	
-	float:right;
+	float:right; 
+	font-size:50px;
 	z-index:999;
-	position:absolute;
+	margin-right: 100px;
+	
+/* 	position:absolute;  */
 
 }
 .attraction-detail-scrapSpan:hover {
@@ -530,34 +539,32 @@ P {
 </head>
 <body>
 
-<div class="test">
 <div class="attraction-detail-wrapDiv">
 
-<c:import url="/WEB-INF/views/attraction/categoryBtn.jsp" />
 
 
 	<div class="attraction-detail-wrapAllDiv" >
-	<div style="width:60%; margin:0 auto">
-		<h1 style="font-family: 'Nanum Brush Script', cursive; font-size: 53px;">${attraction.attraction_title }</h1>
-	
-	</div>
 		<span class="attraction-detail-scrapSpan">
-		<c:if test="${scrapChk eq false }">
-		스크랩하기
-		</c:if>
-		<c:if test="${scrapChk eq true }">
-		스크랩취소하기
-		</c:if>
-		</span>		
+			<c:if test="${scrapChk eq false }">
+				<i class="far fa-bookmark"></i>
+			</c:if>
+			<c:if test="${scrapChk eq true }">
+				<i class="fas fa-bookmark"></i>
+			</c:if>
+		</span>	
+	<div style="width:1000px; margin:0 auto">
+		<h1 style="font-family: 'Nanum Brush Script', cursive; font-size: 53px;">${attraction.attraction_title }</h1>
+	</div>
+		
 	
 	<div class="attraction-detail-imgMainDiv">
 			<div class="attraction-detail-imgDiv">
 				<img class="attraction-detail-img" src="${attraction.attraction.get(0).attraction_photo }" alt="">
 			</div>							 
 	</div>
-	<div class="attraction-detail-conetentDiv" style="border-top:1px solid #ccc">
+	<div class="attraction-detail-conetentDiv">
 				
-		<div style="width:60%; margin: 0 auto;">
+		<div style="width:90%; margin: 0 auto;">
 				<div id="attraction-detail-contentId" style="text-indent: 0.6em;">
 <%-- 				${attraction.attraction_content } --%>
 				</div>
@@ -573,12 +580,15 @@ P {
 			<span class="attraction-detail-contentCateSpan" id="cate1">#${attraction.attraction_category1 }</span>
 			&nbsp;&nbsp;
 			<span class="attraction-detail-contentCateSpan" id="cate2">#${attraction.attraction_category2 }</span>
-		</div>		
+<br>
+		<div style="float:right">
 		
+		<button class="attraction-detail-listBackBtn">목록</button>
+		</div>
+		</div>		
 	</div>
 
-
-		<div style="border-top:1px solid #ccc">
+		<div>
 		<ul class="attraction-detail-vieBtnUl">
 		<li class="attraction-detail-viewBtnList" id="attraction-detail-mapViewLi">지도 보여줘	</li>
 		<li class="attraction-detail-viewBtnList" id="attraction-detail-showViewLi">근처 공연 보여줘		</li>
@@ -596,17 +606,9 @@ P {
 
 
 	
-	<div style="border-top:1px solid #ccc;">
-				<div style=" margin:30px 0px 80px 0px;  width:60%; margin:0 auto">
-			 <button class="subwayBtn" style="float:left;">가까운 지하철 찾기</button><br><br>
-			 		<span class="attraction-detail-subwaySpan"> </span>
-			
-					<button onclick="history.go(-1)" class="attraction-detail-listBackBtn">목록으로 되돌아가기</button>
-				</div>
-		</div>
+	
 </div>
 
-</div>
 </div>
 
 

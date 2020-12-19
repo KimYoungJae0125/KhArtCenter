@@ -269,7 +269,7 @@ public class AttarctionController {
 	
 	
 	@RequestMapping(value="/map")
-	public String attractionMap(TB_ATTRACTION attrInfo, Model model, boolean chk, String area) {
+	public String attractionMap(TB_ATTRACTION attrInfo, Model model, boolean chk, String area, String boardType) {
 				
 		String attraction_no = attrInfo.getAttraction_no();
 		TB_ATTRACTION attraction = attractionService.selectMarker(attraction_no);
@@ -277,6 +277,7 @@ public class AttarctionController {
 		model.addAttribute("chk", chk);
 		model.addAttribute("attraction_no", attraction_no);
 		model.addAttribute("area", area);
+		model.addAttribute("boardType", boardType);
 		
 		
 		
