@@ -499,6 +499,7 @@ $(document).ready(function(){
 	text-overflow: ellipsis;
 	overflow: hidden;
 	white-space: nowrap;
+	z-index: 999;
 }
 
 .attraction-alim-scrapBtn{
