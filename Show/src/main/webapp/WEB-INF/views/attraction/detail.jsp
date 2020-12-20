@@ -14,7 +14,7 @@
 
 <script type="text/javascript">
 	
-	$(document).ready(function(){
+$(document).ready(function(){
 		
 		var attno = ${attraction.attraction_no}
 	
@@ -319,16 +319,17 @@
 		
 		var scrapChk = ${scrapChk}
 		var loginChk = ${login}
+		var timeChk = 1
 		console.log(loginChk)
 		$('.attraction-detail-scrapSpan').click(function(){
 			if(loginChk === undefined){
 				alert("로그인해야만 가능합니다")
 				return;
 			}
-
 				var delChk = false;
 				var insChk = false;
 				var scrapText = "<i class='far fa-bookmark'></i>"
+				var scrapText2 = "스크랩취소했습니다"
 			if(scrapChk){
 				 delChk = true;
 				 scrapChk = false;
@@ -337,11 +338,17 @@
 				insChk = true;
 				 scrapChk = true;
 				 scrapText = "<i class='fas fa-bookmark'></i>"
-			}
-			
-		
+				var scrapText2 = "스크랩했습니다"
 
-			
+			}
+// 				clearTimeout(scrapTimer)
+				
+				$('#attraction-alim-Wrap').css("transition", "")
+				$('#attraction-alim-Wrap').css("width", "0px")
+				console.log("작동한다")
+
+				console.log(timeChk)		
+
 			$.ajax({
 					type: "GET" //요청 메소드
 					, url: "/attraction/navList" //요청 URL
@@ -354,9 +361,33 @@
 					, dataType: "html" //응답받은 데이터의 형식
 					, success: function( res ) {
 						console.log("성공")
+						timeChk++
+					console.log(timeChk)		
+
 						$(".attraction-detail-scrapSpan").html(scrapText);
 						$('#Nav-sideMenu-attractionList').trigger("click");
+						 
+						$('.attraction-alim-scrapSpan').text(scrapText2)
+						$('#attraction-alim-Wrap').css("transition", "all 0.5s ease-in-out")
+						$('#attraction-alim-Wrap').css("width", "500px")
 
+					
+						var scrapTimer = setTimeout(function(){
+						if(timeChk > 1){
+							--timeChk
+							console.log(timeChk)		
+							if(timeChk == 1){
+								$('#attraction-alim-Wrap').css("width", "0px")
+
+							}
+			 				return;
+						}
+
+							$('#attraction-alim-Wrap').css("width", "0px")
+							
+						}, 5000)
+
+					
 					}
 					, error: function() {
 						console.log("실패")
@@ -366,7 +397,18 @@
 			
 		})
 		
-	});
+		
+		$("#attraction-alim-cancleBtn").click(function(){
+			$(".attraction-detail-scrapSpan").trigger("click")
+		})
+		
+		$("#attraction-alim-closeBtn").click(function(){
+				$('#attraction-alim-Wrap').css("width", "0px")
+				clearTimeout(scrapTimer)
+				timeChk = 1
+		})
+		
+});
 
 </script>
 
@@ -444,6 +486,32 @@
 	margin-top:40px;
 }
 
+#attraction-alim-Wrap {
+	position:fixed;
+	 width:0px;
+	 height:200px;
+	 right:0%;
+	 bottom:5%;
+	 background-color: rgba(222, 220, 220, 0.8);
+	 border:1px solid #ccc;	 
+	border-top-left-radius: 9px;
+	border-bottom-left-radius: 9px;
+	text-overflow: ellipsis;
+	overflow: hidden;
+	white-space: nowrap;
+}
+
+.attraction-alim-scrapBtn{
+	background-color: white;
+	width: 100px;
+	height: 30px;
+	margin-left: 30px;
+	border-radius:5px;
+}
+.attraction-alim-scrapBtn:hover {
+	background-color: #c3c3c3;
+	
+}
 
 .attraction-detail-imgMainDiv {
 	border-top:1px solid #ccc;
@@ -564,7 +632,7 @@ P {
 	</div>
 	<div class="attraction-detail-conetentDiv">
 				
-		<div style="width:90%; margin: 0 auto;">
+		<div style="width:85%; margin: 0 auto;">
 				<div id="attraction-detail-contentId" style="text-indent: 0.6em;">
 <%-- 				${attraction.attraction_content } --%>
 				</div>
@@ -604,12 +672,26 @@ P {
 		</div>
 	
 
-
 	
 	
 </div>
 
 </div>
+		<div id="attraction-alim-Wrap">
+			<div class="attraction-alim-wrapDiv">
+					<div class="" style="width:20%; height:70%; float:left; margin-top:20px; margin-left:10px; position:relative; background-color:white;">
+							<img src="${attraction.attraction.get(0).attraction_photo  }"
+							 style="width:100px; height:120px; padding:4px 4px 10px 4px; border:1px solid black; border-radius:3px;">
+					</div>
+						<div style="float:left; width:70%; height:80%; margin-top:10px; margin-left:15px;">
+							<p style="width:100%; font-size:20px; font-weight:bolder; overflow: hidden; white-space: nowrap;">${attraction.attraction_title }</p>
+							<span style="font-size:20px; overflow: hidden; white-space: nowrap;">${user_Id }님</span><br>
+							<span class="attraction-alim-scrapSpan" style="font-size:20px; overflow: hidden; white-space: nowrap;"></span><br><br><br>
+							<button class="attraction-alim-scrapBtn" id="attraction-alim-cancleBtn">취소</button>
+							<button class="attraction-alim-scrapBtn" id="attraction-alim-closeBtn">닫기</button>
+					</div>
+			</div>
+		</div>
 
 
 <c:import url="/WEB-INF/views/footer.jsp" />

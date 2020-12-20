@@ -13,6 +13,7 @@
 
 <script type="text/javascript">
 
+		
 $(document).ready(function() {
 	
 
@@ -321,7 +322,8 @@ $(document).ready(function() {
 		
 		
 	})	
-		
+	
+	
 		
 });
 
@@ -711,7 +713,7 @@ table, tr, td {
 										근처 공연 : 
 										<a href="/show/detail?show_id=${showName.get(sb.index).getShow().get(0).getShow_id() }">
 										${showName.get(sb.index).getShow().get(0).getShow_name() }
-										</a> 
+										</a>
 									</c:otherwise>
 								</c:choose>
 									<br>
