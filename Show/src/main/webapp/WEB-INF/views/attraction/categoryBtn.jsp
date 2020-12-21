@@ -116,7 +116,7 @@ left: 80%
 /* .attraction-category-li:not(:first-child) { */
 /* .attraction-category-li:not(:first-child) { */
 
-/* /* 	margin: 50px 0px 0px 60px; */ */
+ /* 	margin: 50px 0px 0px 60px; */
 	
 /* } */
 

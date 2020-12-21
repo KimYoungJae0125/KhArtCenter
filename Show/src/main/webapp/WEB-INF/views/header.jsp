@@ -14,7 +14,11 @@
   
 
  <script type="text/javascript">
+ 
+ 
  $(document).ready(function() {
+	
+	 
       $("#update").on("click",function(){
          
          console.log("here")
@@ -69,7 +73,23 @@
 		
 	} 
  
- 
+ $(function() {
+	    $(window).scroll(function() {
+	        if ($(this).scrollTop() > 1) {
+	            $('.ScrollButton').fadeIn();
+	        } else {
+	            $('.ScrollButton').fadeOut();
+	        }
+	    });
+	        
+	    $("#TopButton").click(function() {
+	        $('html').animate({scrollTop : 0}, 1);
+	    });
+	 
+	    $("#BottomButton").click(function() {
+	        $('html').animate({scrollTop : ($('#under').offset().top)}, 1);
+	    });
+	});
     
  </script>
   <!-- 합쳐지고 최소화된 최신 CSS -->
@@ -177,6 +197,18 @@ background-color: #4d4d4d;
     padding: 0 0 0 5px;
     
 }
+
+.ScrollButton {
+  position: fixed;   /* 버튼의 위치 고정 */
+  right: 100px;       /* x 위치 입력 */
+  cursor: pointer;   /* 호버링 했을 때 커서 모양 변경 */
+  z-index: 10;       /* 다른 태그에 가려지지 않게 우선순위 변경 */
+  display: none;     /* 스크롤 위치에 상관없이 보이게 하려면 생략 */
+}
+/* 두 태그에 각각 y 위치 입력 */
+#TopButton {
+  bottom: 100px;        
+}
 </style>
  </head>
     
@@ -218,9 +250,12 @@ background-color: #4d4d4d;
          <li class="main-header-menu-bar-li"><a href="/attraction/list">볼거리</a></li>
          <li class="main-header-menu-bar-li"><a href="/myPage/bookList">MY</a></li>
          <c:if test="${member_spot eq '관리자' }">
-         <li class="main-header-menu-bar-li"><a href="/admin/login">관리자</a></li>
+         <li class="main-header-menu-bar-li"><a href="/admin/main">관리자</a></li>
          </c:if>
       </ul>
 </div>
+
+<span><img src="/resources/images/top1.png" id="TopButton" class="ScrollButton" width="60" height="70"></span>
+
  </body>
 </html>
