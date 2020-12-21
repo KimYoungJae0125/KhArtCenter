@@ -74,7 +74,7 @@ height: 292px;
             }
      
             //웹소켓 객체 만드는 코드
-			ws = new WebSocket("ws://IP:8088/echo.do");
+			ws = new WebSocket("ws://172.30.1.19:8088/echo.do");
             console.log(ws)
             
             ws.onopen = function(event){
