@@ -12,6 +12,7 @@ import show.dao.face.AdminDao;
 import show.dto.Admin;
 import show.dto.Member;
 import show.dto.TB_ATTRACTION;
+import show.dto.TB_ATTRACTION_IMG;
 import show.dto.TB_BOOK;
 import show.dto.TB_SHOW;
 import show.service.face.AdminService;
@@ -266,6 +267,18 @@ public class AdminServiceImpl implements AdminService {
 	@Override
 	public List<?> getTiketList(AdminTicketPaging paging) {
 		return adminDao.selectTicketAll(paging);
+	}
+
+	@Override
+	public void adminAttractionInsert(HashMap<String, Object> map) {
+		
+		adminDao.adminAttractionInsert(map);
+	}
+
+	@Override
+	public void adminAttractionImgInsert(HashMap<String, Object> map) {
+		
+		adminDao.adminAttractionImgInsert(map);
 	}
 
 

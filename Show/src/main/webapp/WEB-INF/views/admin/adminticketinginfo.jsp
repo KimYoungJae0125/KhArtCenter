@@ -79,7 +79,7 @@
 				</tbody>
 			</table>
 			<span class="pull-left">total : ${paging.totalCount }</span>
-			<jsp:include page="/WEB-INF/views/util/adminattractionlistpaging.jsp" />
+			<jsp:include page="/WEB-INF/views/util/adminticketpaging.jsp" />
 			 </div>   
 	</div>
 </div>

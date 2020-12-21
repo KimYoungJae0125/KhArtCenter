@@ -8,6 +8,7 @@ import org.springframework.ui.Model;
 import show.dto.Admin;
 import show.dto.Member;
 import show.dto.TB_ATTRACTION;
+import show.dto.TB_ATTRACTION_IMG;
 import show.dto.TB_BOOK;
 import show.dto.TB_SHOW;
 import show.util.AdminAttractionPaging;
@@ -115,6 +116,10 @@ public interface AdminService {
 	public AdminTicketPaging tiketGetPaging(AdminTicketPaging curPage);
 
 	public List<?> getTiketList(AdminTicketPaging paging);
+
+	public void adminAttractionInsert(HashMap<String, Object> map);
+
+	public void adminAttractionImgInsert(HashMap<String, Object> map);
 
 
 	

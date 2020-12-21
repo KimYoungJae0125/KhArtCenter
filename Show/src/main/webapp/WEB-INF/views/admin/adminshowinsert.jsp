@@ -122,7 +122,6 @@
 
 	<div class="text-center">
 		<button class="btn btn-primary" id="btnUpdate">삽입</button>
-		<input type="reset" id="cancel" class="btn btn-danger" value="취소"/>
 	</div>
 	
 </form>

@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 
 import show.dto.Member;
 import show.dto.TB_ATTRACTION;
+import show.dto.TB_ATTRACTION_IMG;
 import show.dto.TB_BOOK;
 import show.dto.TB_SHOW;
 import show.service.face.AdminService;
@@ -313,6 +314,24 @@ public class AdminController {
 		return "redirect:/admin/attractionlist";
 	}
 	
+	@RequestMapping(value = "/admin/attractioninsert" , method = RequestMethod.GET)
+	public String adminAttracionInsertGet() {
+		
+		return "/admin/adminattractioninsert";
+	}
+	
+	@RequestMapping(value = "/admin/attractioninsert", method = RequestMethod.POST)
+	public String adminAttracionInsertPost(
+			@RequestParam HashMap<String, Object> map) {
+		
+		logger.info("인설트 로그" + map);
+		
+		adminService.adminAttractionInsert(map);
+		adminService.adminAttractionImgInsert(map);
+		
+		return "redirect:/admin/attractionlist";
+	}
+	
 	@RequestMapping(value = "/admin/attractiondel")
 	public String adminAttractionDelete(TB_ATTRACTION tb_attraction) {
 		
@@ -320,7 +339,5 @@ public class AdminController {
 		
 		return "redirect:/admin/attractionlist";
 	}
-
-	
 	
 }

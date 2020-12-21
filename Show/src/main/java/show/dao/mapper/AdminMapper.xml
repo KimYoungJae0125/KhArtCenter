@@ -480,18 +480,63 @@
 					,seat_price
 					,show_place
 					,status
-				FROM tb_book B, tb_show S
-				WHERE B.show_id = S.show_id
-			<if test="searchText != null">
-            	AND member_id LIKE '%' || #{searchText} || '%'
-            </if>
-            ORDER BY member_id ASC
-			) B
+			FROM tb_book B, tb_show S
+			WHERE B.show_id = S.show_id
+		<if test="searchText != null">
+           	AND member_id LIKE '%' || #{searchText} || '%'
+        </if>
+        ORDER BY member_id ASC
+		) B
 			ORDER BY rnum
 		) R
 		<where>
 			rnum BETWEEN #{startNo } AND #{endNo }
 		</where>	
 	</select>
+	
+	<insert id="adminAttractionInsert" parameterType="show.dto.TB_ATTRACTION">
+		INSERT INTO tb_attraction (
+			attraction_no
+			, attraction_title
+			, attraction_content
+			, attraction_tel
+			, attraction_category1
+			, attraction_category2
+			, attraction_area1
+			, attraction_area2
+			, attraction_area3
+			, attraction_addr
+			, attraction_latitude
+			, attraction_longitude
+			)
+		VALUES (
+			#{attraction_no}
+			, #{attraction_title}
+			, #{attraction_content}
+			, #{attraction_tel}
+			, #{attraction_category1}
+			, #{attraction_category1}
+			, #{attraction_area1}
+			, #{attraction_area2}
+			, #{attraction_area3}
+			, #{attraction_addr}
+			, #{attraction_latitude}
+			, #{attraction_longitude}
+			)
+	</insert>
+	
+	<insert id="adminAttractionImgInsert" parameterType="show.dto.TB_ATTRACTION_IMG">
+		INSERT INTO tb_attraction_img (
+			attraction_img_no
+			, attraction_no
+ 			, attraction_photo
+			)
+		VALUES (
+			#{attraction_img_no}
+			, #{attraction_no}
+			, #{attraction_photo}
+			)
+	</insert>
+
 	
 </mapper>
