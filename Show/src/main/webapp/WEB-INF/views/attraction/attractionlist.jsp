@@ -416,11 +416,13 @@ table, tr, td {
 		width:200px;
 		height: 70px;
 		display:-webkit-box;
-		line-height: 1.1em;
-		height: 3.1em;
-		font-size: 13px;
+		line-height: 1.2em;
+		height: 3.4em;
+		font-size: 14px;
 		-webkit-line-clamp:3;
 		-webkit-box-orient:vertical;
+ 		font-family: 'NAMSAN', Sans-serif;
+		
 	
 	}
 	
@@ -539,26 +541,31 @@ table, tr, td {
 		white-space: nowrap;
 		overflow: hidden;
 		text-overflow: ellipsis;
+		font-family: 'HANGANG', cursive;
 	}
 
 	/* 근처 장소 내용 담는 P */
 	.attraction-list-listIntroNearbyP {
-		 font-size:7px;
-		 width:200px;
-		 white-space: nowrap;
-		 overflow: hidden;
-		 text-overflow: ellipsis;
+		font-size:12px;
+		width:200px;
+		white-space: nowrap;
+		overflow: hidden;
+		text-overflow: ellipsis;
+ 		font-family: 'Noto Sans KR', sans-serif;
+		 
 		 
 	}
 	
 	.attraction-detail-contentCateSpan{
-	color: #3997c1;
+		color: #3997c1;
+		font-size: 16px;
+		font-family: 'Nanum Pen Script', cursive;
 	}
 
 	.attraction-detail-contentCateSpan:hover, .attraction-list-listArraySpan:hover{
-	cursor: pointer;
-	font-weight: bolder;
-	text-decoration: underline;
+		cursor: pointer;
+		font-weight: bolder;
+		text-decoration: underline;
 	}
 	
 	

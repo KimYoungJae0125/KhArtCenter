@@ -69,6 +69,15 @@ $(document).ready(function(){
 
 <style type="text/css">
 
+@font-face {
+	font-family: "HANGANG";
+	src: url("/resources/SEOULHANGANGB.TTF")
+}
+@font-face {
+	font-family: "NAMSAN";
+	src: url("/resources/서울남산 장체B.TTF")
+}
+
 .attraction-category-ul {
 	width: 100%;
  	margin-bottom: 200px;
@@ -88,6 +97,8 @@ $(document).ready(function(){
 	font-size: 18px;
 	color: #ff6633;
 	font-weight: 600;
+	font-family: 'HANGANG', cursive;
+	
 }
 .attraction-category-li:nth-child(2) {
 left: 20%

@@ -30,6 +30,7 @@
 	
 	var top = $(window).scrollTop() + scrollHeight
 	, left = scrollWidth -$(window).scrollLeft() ;
+	$(".Nav-sideMenu-WrapDiv").css("opacity", '1');
 	$(".Nav-sideMenu-WrapDiv").css("top", top+'px');
 	$(".Nav-sideMenu-WrapDiv").css("right", left+"px");
 
@@ -49,55 +50,59 @@
 		
 			if(idName == "Nav-sideMenu-showList"){
 				if(loginChk === undefined){
-					alert("로그인 해야만 볼 수 있습니다")
+					alert("로그인 해야만 볼 수 있습니다.")
 					navOneclick = false
 					$('#Nav-sideMenu-Home').trigger("click");
 
 					return;
 				}
-				listText = "공연목록입니다<br><br>"
+				listText = "공연목록입니다.<br><br>"
 				loc = "/attraction/nava"
 			}
 			if(idName == "Nav-sideMenu-attractionList"){
 				if(loginChk === undefined){
-					alert("로그인 해야만 볼 수 있습니다")
+					alert("로그인 해야만 볼 수 있습니다.")
 					navOneclick = false
 					$('#Nav-sideMenu-Home').trigger("click");
 
 					return;
 				}
-				listText = "볼거리목록입니다<br><br>"
+				listText = "볼거리목록입니다.<br><br>"
 				loc = "/attraction/nava"
 					whereList = 3
 					chkNumber = 4
 	
 			}
 			if(idName == "Nav-sideMenu-visitList"){
-				listText = "방문목록입니다<br><br>"
+				listText = "방문목록입니다.<br><br>"
 				loc = "/attraction/nava"
 					whereList = 4
 					chkNumber = 5
 	
 			}
-			$(".Nav-sideMenu-li").css("background-color", "white")
+			$(".Nav-sideMenu-li").css("background-color", "#eaeaea")
 			$(".Nav-sideMenu-li").css("text-decoration", "")
-			$(".Nav-sideMenu-li").css("font-weight", "")
+			$(".Nav-sideMenu-li").css("border-bottom", "2px solid #ccc")
+
 			$(".Nav-sideMenu-listViewText").html(listText);
 	
-			$('#'+idName).css("background-color", "gray")
+			$('#'+idName).css("background-color", "#aba6a6")
 			$('#'+idName).css("text-decoration", "underline")
-			$('#'+idName).css("font-weight", "bolder")
+			$('#'+idName).css("border-bottom", "4px solid black")
 			if(idName == "Nav-sideMenu-Home"){
 				if(loginChk === undefined){
-					listText = "로그인해주세요<br>"
+					listText = "로그인입니다.<br><br>"
 				
 				} else{
-					listText = "로그아웃할까요?<br>"
+					listText = "로그아웃입니다.<br><br>"
 					
 				}
 				$(".Nav-sideMenu-listViewListDiv").load("/attraction/login");
+			
 				navOneclick = false
+			
 				$(".Nav-sideMenu-listViewText").html(listText);
+				$('#Nav-sideMenu-loadMore').css("display", "none")
 
 				return;
 
@@ -109,7 +114,7 @@
 			$('#Nav-sideMenu-loadMore').trigger("click");
 			navOneclick = false
 	
-			}, 1000);
+			}, 500);
 			
 		}
 
@@ -147,7 +152,7 @@
 									
 									$(".Nav-sideMenu-listViewListDiv").append(res);
 // 									$(".Nav-sideMenu-listViewListDiv").append($(res).find($('#total')));
-									$(".Nav-sideMenu-listViewListDiv").css("transition", "all 1s ease-in-out");
+									$(".Nav-sideMenu-listViewListDiv").css("transition", "all 0.5s ease-in-out");
 									
 									
 									$(".Nav-sideMenu-listViewListDiv").css("opacity", "1");
@@ -200,6 +205,7 @@
 	
 	$("#removeLoadMore").on('click', function(){
 		removeChk = true
+		i--
 		$('#total').val($('#total').val()-1)
 		$('#Nav-sideMenu-loadMore').trigger("click");
 
@@ -233,7 +239,9 @@
 // 			console.log($(window).scrollLeft())	
 		});	
 	
-		
+		$('.Nav-sideMenu-navCloseBtn').click(function(){
+			$('.nav').trigger("click")
+		})
 		
 		
 	});
@@ -246,11 +254,15 @@
 
 	.Nav-sideMenu-WrapDiv {
 		border:5px solid #ccc; 
-		width:300px;
-		 height:90%;
- 		 position:absolute;
+ 		width:300px;
+ 		height:90%;
+
+		position:absolute;
 		right:0%;
-		 z-index: 997;
+		z-index: 997;
+		transition: all 0.3s ease-in-out;
+		opacity: 0;
+		
 	/*  	 left:calc(90%);  */
 		background-color: white;
 		border-radius: 7px;
@@ -261,111 +273,133 @@
 		float:left;
 		display:inline-block;
 		width: 25%;
-		background-color: white;
+		background-color: #eaeaea;
 		padding: 10px;
 		text-align:center;
 		z-index: 999;
 		top:0;
 		left:0;
-		border-bottom:1px solid black;
+		border-bottom:2px solid #ccc;
+		font-family: 'HANGANG', cursive;
+		font-weight:bolder;
 		
 		
 	}
 	
 	.Nav-sideMenu-li:nth-child(2){
 		left:25%;
-		border-left:1px solid black;
+		border-left:2px solid #ccc;
 	}
 	.Nav-sideMenu-li:nth-child(3){
 		left:50%;
-		border-left:1px solid black;
+		border-left:2px solid #ccc;
 	}
 	.Nav-sideMenu-li:last-child{
 		left:75%;
-		border-left:1px solid black;
+		border-left:2px solid #ccc;
 	}
 
 	.Nav-sideMenu-li:hover{
 		cursor: pointer;
-		background-color: #c3c3c3;
+ 		background-color: #aba6a6;
 		text-decoration: underline;
 	 	font-weight:bolder;
 			 	
 	}
 
-.Nav-sideMenu-listViewDiv {
-
-	width:100%;
-	height:85%;
-	margin-top:-15px;
-	overflow-x:hidden;
-	overflow-y:visible;
-	tr
-}
-
-.Nav-sideMenu-listViewText {
-
-	margin-left: 15px;
-	font-size: 15px;
-	font-weight: bolder;
+	.Nav-sideMenu-listViewDiv {
 	
-}
-
-.Nav-sideMenu-listViewListDiv {
-
-	width:100%;
-	margin:0 auto;
-	position:relative;
+		width:100%;
+		height:85%;
+		margin-top:-14px;
+		overflow-x:hidden;
+		overflow-y:visible;
+	}
 	
-}
+	.Nav-sideMenu-listViewText {
+	
+		margin-left: 15px;
+		font-size: 15px;
+		font-weight: bolder;
+		font-family: 'HANGANG', cursive;
+		
+		
+	}
+	
+	.Nav-sideMenu-listViewListDiv {
+	
+		width:100%;
+		margin:0 auto;
+		position:relative;
+		
+	}
+	
+	#Nav-sideMenu-loadMore {
+	 
+		text-align:center;
+		border:1px solid #ccc;
+		position:absolute;
+		width:100%;
+		bottom:0px;
+		font-family: 'NAMSAN', cursive;
+		
+	
+	}
+	
+	#Nav-sideMenu-loadMore:hover {
+	
+		cursor: pointer;
+		background-color: gray;
+		text-decoration: underline;
+		font-weight: bolder;
+	
+	}
+	
+	.Nav-sideMenu-navCloseBtn {
+		 margin-right: 15px;
+		 color: #de1111;
+		 margin-top: -8px;
+		 right: 3%;
+		 position: absolute;
+ 		font-family: 'HANGANG', cursive;
+		 
+	}
 
-#Nav-sideMenu-loadMore {
- 
-	text-align:center;
-	border:1px solid #ccc;
-	position:absolute;
-	width:100%;
-	bottom:0px;
-
-}
-
-#Nav-sideMenu-loadMore:hover {
-
-	cursor: pointer;
-	background-color: gray;
-	text-decoration: underline;
-	font-weight: bolder;
-
-}
+	.Nav-sideMenu-navCloseBtn:hover {
+		text-decoration: underline;
+		cursor: pointer;
+		font-weight: bolder;
+	}
 
 </style>
 
 </head>
 <body>
-<div class="Nav-sideMenu-WrapDiv">
-<ul>
-<li class="Nav-sideMenu-li" id="Nav-sideMenu-Home" >홈</li>
-<li class="Nav-sideMenu-li" id="Nav-sideMenu-showList" >공연</li>
-<li class="Nav-sideMenu-li" id="Nav-sideMenu-attractionList" >볼거리</li>
-<li class="Nav-sideMenu-li" id="Nav-sideMenu-visitList">목록</li>
-</ul>
-<br>
-<br>
-<br>
+	<div class="Nav-sideMenu-WrapDiv">
+	
+		<ul>
+			<li class="Nav-sideMenu-li" id="Nav-sideMenu-Home" >홈</li>
+			<li class="Nav-sideMenu-li" id="Nav-sideMenu-showList" >공연</li>
+			<li class="Nav-sideMenu-li" id="Nav-sideMenu-attractionList" >볼거리</li>
+			<li class="Nav-sideMenu-li" id="Nav-sideMenu-visitList">목록</li>
+		</ul>
+			<br>
+			<br>
+			<br>
 		<div class="Nav-sideMenu-listViewDiv">
-		<span class="Nav-sideMenu-listViewText"></span>
-		
-					<div class="Nav-sideMenu-listViewListDiv">
-			</div>
-		
+					<span class="Nav-sideMenu-navCloseBtn">닫기</span>
+			<span class="Nav-sideMenu-listViewText"></span>
+			
+				<div class="Nav-sideMenu-listViewListDiv">
+				</div>
 			
 		</div>
-			<div id="Nav-sideMenu-loadMore" style="display:none;">
+		<div id="Nav-sideMenu-loadMore" style="display:none;">
+				더보기
+		</div>
+	
+	</div>
 			<input type="hidden" id="removeLoadMore">
-			loadMore
-			</div>
-
-</div>
 
 </body>
 </html>

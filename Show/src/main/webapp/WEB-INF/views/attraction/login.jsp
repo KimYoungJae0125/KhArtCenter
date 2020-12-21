@@ -10,6 +10,8 @@
   body, td { font-size: 13px }
   #disableDiv { position:absolute; left:0; top:0;width:100%; height:100%; z-index:995 ; background-color:#EEEEEE; filter:Alpha(opacity=80);opacity:0.8; -moz-opaciry:0.8}
   #loadingDiv { position:absolute; left:50; top:100;width:200px; height:200px; z-index:999; background-color:#FFFFFF;};
+	
+ 
   </style>
   <script type="text/javascript" src="http://code.jquery.com/jquery-2.2.4.min.js"></script>
   
@@ -32,7 +34,7 @@
    
    $(document).ready(function(){
 	   $('#button').click(function(){
-		   alert("클릭")
+// 		   alert("클릭")
 			$.ajax({
 				type: "POST" //요청 메소드
 				, url: "/main/login" //요청 URL
@@ -44,8 +46,9 @@
 				, dataType: "html" //응답받은 데이터의 형식
 				, success: function( res ) {
 					console.log("성공")
-					$('.nav').trigger("click");
-					$('.nav').trigger("click");
+					$('#navLoginLogout').trigger('click');
+
+
 	
 				}
 				, error: function() {
@@ -56,10 +59,10 @@
 		
 	   })
 	   $('#logoutBtn').click(function(){
-		   alert("클릭")
-		$(".Nav-sideMenu-listViewListDiv").load("/main/logout");
-		   $('.nav').trigger("click");
-			$('.nav').trigger("click");
+// 		   alert("클릭")
+			$(".Nav-sideMenu-listViewListDiv").load("/main/logout");
+			$('#navLoginLogout').trigger('click');
+			
 		
 	   })
 	   
@@ -67,10 +70,13 @@
   </script>
  </head>
  <body>
-  <div id="container" class="xb">
+  <div id="container" class="xb" style="text-align:center; border-top:1px solid #ccc;">
   <c:if test="${login eq true }">
-  	${member_id }님 로그아웃 하실래여?<br>
-	<button id="logoutBtn">로그아웃</button>
+	<h1 class="main-login-member">member logout</h1>
+  
+  	${member_id }님 로그아웃 하시겠습니까?<br><br>
+ 		<button id="logoutBtn" style="width:100px; border-radius:5px; background-color:white;">로그아웃</button>
+  	
   
   </c:if>
   <c:if test="${login ne true }">
@@ -84,13 +90,10 @@
 								<div class="main-login-clear"></div>
 								<label for="user">비밀번호</label><input type="password" id="member_pw" name="member_pw" >
 							</div>
-<!-- 							<input type="submit" value="로그인하기"> -->
-								<button id="button">로그인</button>
+								<button id="button" style="width:100px; border-radius:5px; background-color:white;">로그인</button>
 								
 							<div class="main-login-clear"></div>
 							<div class="main-login-form4">
-<!-- 								<label><input type="checkbox">아이디저장</label> <label><input -->
-<!-- 									type="checkbox">보안접속</label> -->
 								<div class="main-login-clear"></div>
 			
 							</div>

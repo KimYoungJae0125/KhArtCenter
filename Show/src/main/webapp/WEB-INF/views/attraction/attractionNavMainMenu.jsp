@@ -32,8 +32,10 @@
 					, success: function( res ) {
 						chk = true;
 						console.log("성공")
+						$(".nav").css("opacity", '0');
 						$(document.body).append(res);
 						console.log(pageno);
+
 					}
 					, error: function() {
 						console.log("실패")
@@ -42,13 +44,28 @@
 				})	
 			
 		} else {
-			chk = false;
+			$(".nav").css("opacity", '1');
+
+			$(".Nav-sideMenu-WrapDiv").css("opacity", '0');
+			setTimeout(function() {
 			$('.Nav-sideMenu-WrapDiv').remove();
+			chk = false;
+				
+			}, 300);
 			
 		}
 	});
 		
+	$("#navLoginLogout").click(function(){
+			if(chk == true){
+				$('.Nav-sideMenu-WrapDiv').remove();
+				chk = false;
+				$('.nav').trigger('click')
+				}
+		
+		
 
+	})	
 
 		
 	});
@@ -66,6 +83,8 @@
  		 position:absolute;
 		right:0%;
 		 z-index: 997;
+ 		transition: all 0.3s ease-in-out;
+		 
 	/*  	 left:calc(90%);  */
 		background-color: white;
 		border-radius: 300px;
@@ -78,6 +97,11 @@
 	.nav:hover {
 	cursor:pointer;
 	background-color: black;
+	transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 	}
 
 </style>
@@ -85,8 +109,8 @@
 </head>
 <body>
 <div class="nav">
-
 </div>
+<input type="hidden" id="navLoginLogout">
 
 
 </body>

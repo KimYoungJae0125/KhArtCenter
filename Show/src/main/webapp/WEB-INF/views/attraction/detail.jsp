@@ -318,11 +318,11 @@ $(document).ready(function(){
 		
 		
 		var scrapChk = ${scrapChk}
-		var loginChk = ${login}
+		var loginChk = "${user_Id}"
 		var timeChk = 1
 		console.log(loginChk)
 		$('.attraction-detail-scrapSpan').click(function(){
-			if(loginChk === undefined){
+			if(loginChk === "visitor"){
 				alert("로그인해야만 가능합니다")
 				return;
 			}
@@ -413,15 +413,6 @@ $(document).ready(function(){
 </script>
 
 <style type="text/css">	
-	.test {
-			postion: absoulute;
-			background-color: gray;
-			width: 1500px;
-			min-width: 1000px;
-			height: 100%;
-			margin: 0 auto
-	}
-
 
 .attraction-detail-vieBtnUl{
 	text-align: center;
@@ -433,7 +424,7 @@ $(document).ready(function(){
 	border-top: 1px solid #ccc;
 	border-bottom: 1px solid #ccc;
 	float:left;
-		font-family: 'Nanum Pen Script', cursive;
+	font-family: 'Nanum Pen Script', cursive;
 	font-size: 22px;
 }
 
@@ -468,8 +459,7 @@ $(document).ready(function(){
 
 }
 .attraction-detail-conetentDiv {
-	font-family: 'Noto Sans KR', sans-serif;
-	
+ 	font-family: 'Noto Sans KR', sans-serif;
 	white-space:normal; 
  	font-size: 19px;
 	padding: 10px;
@@ -544,7 +534,7 @@ $(document).ready(function(){
 .attraction-detail-img {
 	width: 100%;
 	height: 100%;
-	border: 1px solid #ccc;
+	border: 5px solid black;
 	border-radius: 5px;
 }
 
@@ -597,9 +587,14 @@ P {
 }
 .attraction-detail-scrapSpan:hover {
 	
-	text-decoration: underline;
-	font-weight: bolder;
+/* 	text-decoration: underline; */
+/* 	font-weight: bolder; */
 	cursor: pointer;
+	transform: scale(1.1);
+  -webkit-transform: scale(1.1);
+  -moz-transform: scale(1.1);
+  -ms-transform: scale(1.1);
+  -o-transform: scale(1.1);
 
 }
 
@@ -622,7 +617,7 @@ P {
 			</c:if>
 		</span>	
 	<div style="width:1000px; margin:0 auto">
-		<h1 style="font-family: 'Nanum Brush Script', cursive; font-size: 53px;">${attraction.attraction_title }</h1>
+		<h1 style="font-family: 'HANGANG', cursive; font-size: 53px;">${attraction.attraction_title }</h1>
 	</div>
 		
 	
@@ -640,8 +635,8 @@ P {
 			
 			<br><br>	
 				
-				<p style="font-size: 14px;">문의 사항 : ${attraction.attraction_tel }</p>
-				<p style="font-size: 13px;">상세주소 : ${attraction.attraction_addr }</p>
+				<p style="font-size: 14px;  font-family: 'Noto Sans KR', sans-serif;"><i class="fas fa-phone-alt"></i>)문의사항 : ${attraction.attraction_tel }</p>
+				<p style="font-size: 13px;  font-family: 'Noto Sans KR', sans-serif;"><i class="fas fa-map-marked-alt"></i>)상세주소 : ${attraction.attraction_addr }</p>
 				
 		
 		<br>
@@ -659,9 +654,9 @@ P {
 
 		<div>
 		<ul class="attraction-detail-vieBtnUl">
-		<li class="attraction-detail-viewBtnList" id="attraction-detail-mapViewLi">지도 보여줘	</li>
-		<li class="attraction-detail-viewBtnList" id="attraction-detail-showViewLi">근처 공연 보여줘		</li>
-		<li class="attraction-detail-viewBtnList" id="attraction-detail-attractionViewLi">다른 볼거리 보여줘		</li>
+		<li class="attraction-detail-viewBtnList" id="attraction-detail-mapViewLi">지도 보기	</li>
+		<li class="attraction-detail-viewBtnList" id="attraction-detail-showViewLi">근처 공연 보기		</li>
+		<li class="attraction-detail-viewBtnList" id="attraction-detail-attractionViewLi">근처 다른 볼거리 보기		</li>
 		</ul>
 		
 				<br>
@@ -680,12 +675,12 @@ P {
 </div>
 		<div id="attraction-alim-Wrap">
 			<div class="attraction-alim-wrapDiv">
-					<div class="" style="width:20%; height:70%; float:left; margin-top:20px; margin-left:10px; position:relative; background-color:white;">
+					<div style="width:20%; height:70%; float:left; margin-top:20px; margin-left:10px; position:relative; background-color:white;">
 							<img src="${attraction.attraction.get(0).attraction_photo  }"
 							 style="width:100px; height:120px; padding:4px 4px 10px 4px; border:1px solid black; border-radius:3px;">
 					</div>
 						<div style="float:left; width:70%; height:80%; margin-top:10px; margin-left:15px;">
-							<p style="width:100%; font-size:20px; font-weight:bolder; overflow: hidden; white-space: nowrap;">${attraction.attraction_title }</p>
+							<p style="font-family: 'HANGANG', cursive;width:100%; font-size:20px; font-weight:bolder; overflow: hidden; white-space: nowrap;">${attraction.attraction_title }</p>
 							<span style="font-size:20px; overflow: hidden; white-space: nowrap;">${user_Id }님</span><br>
 							<span class="attraction-alim-scrapSpan" style="font-size:20px; overflow: hidden; white-space: nowrap;"></span><br><br><br>
 							<button class="attraction-alim-scrapBtn" id="attraction-alim-cancleBtn">취소</button>

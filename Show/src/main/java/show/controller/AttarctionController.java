@@ -86,9 +86,9 @@ public class AttarctionController {
 		}
 		
 		if(boardType == null) {
-			System.out.println("테스트" + boardType);
+//			System.out.println("테스트" + boardType);
 			boardType = "image";
-			System.out.println("테스트" + boardType);
+//			System.out.println("테스트" + boardType);
 		}
 
 		
@@ -128,7 +128,6 @@ public class AttarctionController {
 		model.addAttribute("boardType", boardType);
 
 		return "attraction/attractionlist";
-			
 		
 		
 	}
@@ -184,7 +183,7 @@ public class AttarctionController {
 		
 	
 	@RequestMapping(value="/nava")
-	public String attractionNava(AttractionPaging curPage, Model model, int listNo, int chkNumber, int whereList, HttpSession session) {
+	public String attractionNava(AttractionPaging curPage, Model model, int listNo, int chkNumber, int whereList, HttpSession session, String boardType, String area) {
 		HashMap<String, Object> searchList = new HashMap<String, Object>();
 
 	
@@ -197,6 +196,9 @@ public class AttarctionController {
 	
 	
 		model.addAttribute("whereList", whereList);
+		model.addAttribute("area", area);
+		model.addAttribute("boardType", boardType);
+		
 		System.out.println(whereList);
 		
 		return "attraction/attractionNavList";
@@ -204,15 +206,15 @@ public class AttarctionController {
 	}
 	
 	public void NavList(AttractionPaging curPage, Model model, HashMap<String, Object> searchList, HttpSession session) {
-		System.out.println("아오페이징..." + curPage.getCurPage());
-		System.out.println("아오페이징..." + curPage);
+//		System.out.println("페이징..." + curPage.getCurPage());
+//		System.out.println("페이징..." + curPage);
 
 		loginId(searchList, session);
 
 	
 		AttractionPaging paging = attractionService.selectAttractionPaging(curPage, searchList);
 		searchList.put("paging", paging);
-		System.out.println("아오페이징..." + paging);
+//		System.out.println("페이징..." + paging);
 		model.addAttribute("paging", paging);
 		
 		listArray(model, searchList, session);
@@ -252,16 +254,17 @@ public class AttarctionController {
 		loginId(searchList, session);
 		
 		boolean scrapChk = attractionService.scrapChk(searchList);
-		System.out.println(scrapChk);
+//		System.out.println(scrapChk);
 
 		attractionNavList(attrInfo, true, true, 4, session);
 
 		TB_ATTRACTION attraction = attractionService.selectMarker(attraction_no);
-
 		
 		model.addAttribute("attraction", attraction);
 		model.addAttribute("scrapChk", scrapChk);
-	 
+		model.addAttribute("user_Id", searchList.get("userId"));
+		
+
 
 		
 		

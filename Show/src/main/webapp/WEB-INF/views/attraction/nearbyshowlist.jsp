@@ -70,15 +70,16 @@ $(document).ready(function(){
 }
 
 .attraction-detail-showNameDiv {
-	font-family: 'Nanum Pen Script', cursive;
-/* 	font-weight: bolder; */
-	font-size: 18px;
+	font-family: 'HANGANG', cursive;
+ 	font-weight: bolder;
+/* 	font-size: 18px; */
 	width:80%;
 	height: 10%;
 	margin: 0 auto;
  	overflow:hidden;	 
 	white-space:nowrap;
 	text-overflow: ellipsis;
+	margin-top: 5px;
 /* 	padding-top: 5px; */
 	
 }
