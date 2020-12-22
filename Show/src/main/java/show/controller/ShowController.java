@@ -134,8 +134,6 @@ public class ShowController {
 	
 	@RequestMapping(value="/show/book3")
 	public void book3() {
-		
-
 	}
 	
 	@RequestMapping(value="/show/book3Proc", method = RequestMethod.POST, produces = "application/json; charset=UTF-8")
@@ -157,6 +155,7 @@ public class ShowController {
 
 		}
 		logger.info("book3 list "+list);
+		model.addAttribute("showDetail",showService.getShowDetail(Integer.toString(list.get(0).getShow_id())));
 		model.addAttribute("list",list);
 		model.addAttribute("member",myPageService.getMember(id));
 		return "show/book3";
@@ -211,7 +210,7 @@ public class ShowController {
 				TB_SHOW show = showService.getShowDetail(show_id);
 				
 				Member member = myPageService.getMember(member_id);
-				helper.setFrom("@gmail.com"); // 보낼 이메일주소  
+				helper.setFrom("ghvkud5638@gmail.com"); // 보낼 이메일주소  
 				helper.setTo(member.getEmail()); // 받는 이메일 주소
 				helper.setSubject(member_id+"님! 예매가 완료 되었습니다."); 
 								
@@ -225,7 +224,7 @@ public class ShowController {
 				
 				helper.setText(contents, true); 
 				
-				FileSystemResource file = new FileSystemResource(new File("보낼 파일 주소 경로")); 
+				FileSystemResource file = new FileSystemResource(new File("E:/notice.png")); 
 				helper.addInline("notice.png", file); 
 			}
 		};
