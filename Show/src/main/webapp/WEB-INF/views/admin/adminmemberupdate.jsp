@@ -19,7 +19,7 @@
 
 <script type="text/javascript">
 	function fnDelete( numb ) {
-		alert(numb+"번 누르셨습니다.");
+// 		alert(numb+"번 누르셨습니다.");
 		if(confirm("정말로 탈퇴시키겠습니까?") == true){
 			window.location.href = "/admin/memberdel?member_id="+numb;
 		}

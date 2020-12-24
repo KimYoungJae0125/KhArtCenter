@@ -37,7 +37,7 @@ public class AdminController {
 	//----------------- 관리자 메인 페이지 ----------------------
 	
 	@RequestMapping(value="/admin/main") 
-	public String main(Model model
+	public String adminmain(Model model
 			, @RequestParam HashMap<String, String> map) {
 		
 		logger.info("관리자메인페이지");
